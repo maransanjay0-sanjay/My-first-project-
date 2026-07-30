@@ -23,7 +23,7 @@ USE library_management_system;
  
  
  
- --member table
+ --members table
  
  CREATE TABLE members(
     member_id SERIAL PRIMARY KEY ,
