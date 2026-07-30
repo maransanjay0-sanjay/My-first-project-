@@ -52,7 +52,4 @@ CREATE TABLE issued_books (
 );
 
 
-JOIN issued_books
-ON books.Book_id = issued_books.Book_id  
-JOIN members
-ON members.member_id = issued_books.member_id;
+
