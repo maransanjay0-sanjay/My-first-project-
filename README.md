@@ -11,42 +11,11 @@ This project demonstrates database design and SQL querying skills using a real-w
 ### 1. books
 Stores details of all books available in the library.
 
-| Column | Type | Description |
-|---|---|---|
-| Book_id | SERIAL (PK) | Unique ID for each book |
-| title | VARCHAR(500) | Book title |
-| author | VARCHAR(500) | Author name |
-| category_name | VARCHAR(500) | Genre/category |
-| isbn | VARCHAR(500) | Unique ISBN number |
-| publisher | VARCHAR(500) | Publisher name |
-| published_year | INT | Year of publication |
-| total_copies | INT | Total copies owned by library |
-| available_copies | INT | Copies currently available |
-
 ### 2. members
 Stores details of registered library members.
 
-| Column | Type | Description |
-|---|---|---|
-| member_id | SERIAL (PK) | Unique ID for each member |
-| first_name | VARCHAR(500) | Member's first name |
-| last_name | VARCHAR(500) | Member's last name |
-| email | VARCHAR(500) | Unique email |
-| contact | VARCHAR(500) | Contact number |
-| adress | TEXT | Member's address |
-| join_date | DATE | Date member joined |
-
 ### 3. issued_books
-Tracks which book was issued to which member, and when.
-
-| Column | Type | Description |
-|---|---|---|
-| issued_id | SERIAL (PK) | Unique record ID |
-| Book_id | FK → books | References the issued book |
-| member_id | FK → members | References the borrowing member |
-| issue_date | DATE | Date the book was issued |
-| due_date | DATE | Date the book is due |
-| return_date | DATE | Date the book was actually returned |
+Tracks which book was issued to which member and when.
 
 ## 🔗 Relationships
 
