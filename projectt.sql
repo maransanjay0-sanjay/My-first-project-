@@ -213,6 +213,75 @@ VALUES
 (4, 17, '2025-02-27', '2025-03-13', '2025-03-13');
 
 
+# NULL VALUES 
+
+SELECT * FROM issued_books
+WHERE return_date IS NULL;
+
+# CTE (Common Table Expressions)
+
+WITH overdue AS (
+ SELECT * FROM issued_books
+ WHERE due_date < CURDATE() AND 
+return_date IS NULL
+)
+SELECT member_id, COUNT(*) AS overdue_count
+FROM overdue
+GROUP BY member_id;
+
+# WINDOW FUNCTIONS
+
+SELECT issued_id, Book_id,
+  COUNT(*) OVER (PARTITION BY Book_id)
+AS total_times_issued
+FROM issued_books;
+
+# JOIN (INNER,SELF,CROSS)
+
+FROM issued_books ib
+INNER JOIN members m ON ib.member_id = 
+m.member_id
+INNER JOIN books b ON ib.Book_id = 
+b.Book_id
+WHERE ib.return_date IS NULL;
+
+# SELF JOIN 
+
+SELF b1.title AS book1, b2.title AS
+book2, b1 author
+FROM booksb1
+JOIN books b2 ON b1.author = b2.author AND
+b1.Book_id < b2.Book_id;
+
+#CROSS JOIN 
+
+SELECT m.first_name, c.category_name
+FROM members m
+CROSS JOIN ( SELECT DISTINCT category_name
+FROM books) c
+LIMIT 20;
+
+# SUBQUERY
+
+SELECT * FROM books
+WHERE available_copies = (SELECT
+MAX (available_copies) FROM books);
+
+# AGGREGATE / GROUP BY
+
+SELECT Category_name, COUNT(*) AS
+total_titles,SUM(available_copies) AS 
+total_available
+FROM books
+GROUP BY category_name
+ORDER BY total_titles DESC;
+
+
+
+
+
+
+
 
 
 
